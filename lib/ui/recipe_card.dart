@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:cached_network_image/cached_network_image.dart';
+import '../network/recipe_model.dart';
 
-// TODO: Replace with new class
-Widget recipeStringCard(String image, String label) {
+Widget recipeCard(APIRecipe recipe) {
   return Card(
     elevation: 4.0,
     shape: RoundedRectangleBorder(
@@ -18,14 +18,25 @@ Widget recipeStringCard(String image, String label) {
             topRight: Radius.circular(6.0),
           ),
           child: CachedNetworkImage(
-            // TODO: Replace with image from recipe
-            imageUrl: image,
+            imageUrl: recipe.image,
             height: 210,
             fit: BoxFit.fill,
           ),
         ),
         const SizedBox(
           height: 12.0,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(
+            recipe.label,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          ),
+        ),
+        const SizedBox(
+          height: 8.0,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8.0),
