@@ -53,7 +53,7 @@ class RecipeDetails extends StatelessWidget {
                 padding: EdgeInsets.only(left: 16.0),
                 child: Text(
                   // TODO 2
-                  'Check Vesuvio',
+                  'Chicken Vesuvio',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ),
               ),
