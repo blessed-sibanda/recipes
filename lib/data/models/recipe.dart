@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:recipes/data/models/ingredient.dart';
 
 class Recipe extends Equatable {
-  int id;
+  int? id;
   final String label;
   final String image;
   final String url;
@@ -13,7 +13,7 @@ class Recipe extends Equatable {
   final double totalTime;
 
   Recipe({
-    required this.id,
+    this.id,
     required this.label,
     required this.image,
     required this.url,
