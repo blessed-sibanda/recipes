@@ -256,7 +256,11 @@ class _RecipeListState extends State<RecipeList> {
     return GestureDetector(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
+            int id;
+            Random random = new Random();
+            id = random.nextInt(100000);
             final detailRecipe = Recipe(
+                id: id,
                 label: recipe.label,
                 image: recipe.image,
                 url: recipe.url,
