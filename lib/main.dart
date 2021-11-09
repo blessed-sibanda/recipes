@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:logging/logging.dart';
-import 'package:recipes/data/memory_repository.dart';
-import 'package:recipes/mock_service/mock_service.dart';
-import 'data/repository.dart';
-import 'network/recipe_service.dart';
-import 'network/service_interface.dart';
+import 'package:recipes/data/repositories.dart';
+import 'services.dart';
 
 import 'ui/main_screen.dart';
 
@@ -34,8 +31,8 @@ class MyApp extends StatelessWidget {
         ),
         Provider<ServiceInterface>(
           // You can switch between different services
-          create: (_) => RecipeService.create(),
-          // create: (_) => MockService()..create(),
+          // create: (_) => RecipeService.create(),
+          create: (_) => MockService()..create(),
           lazy: false,
         )
       ],
