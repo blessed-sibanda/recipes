@@ -173,6 +173,6 @@ class DatabaseHelper {
   }
 
   void close() {
-    _streamDatabase!.close();
+    _streamDatabase?.close();
   }
 }

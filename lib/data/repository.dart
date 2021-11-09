@@ -27,5 +27,5 @@ abstract class Repository {
 
   Future init();
 
-  Future close();
+  void close();
 }
