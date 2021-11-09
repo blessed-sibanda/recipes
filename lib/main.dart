@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
           lazy: false,
         ),
         Provider<ServiceInterface>(
-          // you can also switch to RecipeService
-          // create: (_) => RecipeService.create(),
-          create: (_) => MockService()..create(),
+          // You can switch between different services
+          create: (_) => RecipeService.create(),
+          // create: (_) => MockService()..create(),
           lazy: false,
         )
       ],

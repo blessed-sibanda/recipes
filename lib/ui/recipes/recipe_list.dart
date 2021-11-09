@@ -211,7 +211,7 @@ class _RecipeListState extends State<RecipeList> {
             );
           }
           loading = false;
-          final result = snapshot.data!.body;
+          final result = snapshot.data?.body;
           if (result is Error) {
             inErrorState = true;
             return _buildRecipeList(context, currentSearchList);
