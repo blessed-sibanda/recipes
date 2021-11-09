@@ -72,4 +72,24 @@ class DatabaseHelper {
     await database;
     return _streamDatabase!;
   }
+
+  List<Recipe> parseRecipes(List<Map<String, dynamic>> recipeList) {
+    final recipes = <Recipe>[];
+    recipeList.forEach((recipeMap) {
+      final recipe = Recipe.fromJson(recipeMap);
+      recipes.add(recipe);
+    });
+    return recipes;
+  }
+
+  List<Ingredient> parseIngredients(List<Map<String, dynamic>> ingredientList) {
+    final ingredients = <Ingredient>[];
+    ingredientList.forEach((ingredientMap) {
+      final ingredient = Ingredient.fromJson(ingredientMap);
+      ingredients.add(ingredient);
+    });
+    return ingredients;
+  }
+
+  // TODO: Add findAppRecipes here
 }
