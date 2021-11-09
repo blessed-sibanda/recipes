@@ -10,7 +10,9 @@ import 'ui/main_screen.dart';
 Future<void> main() async {
   _setupLogging();
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  final repository = SqliteRepository();
+  await repository.init();
+  runApp(MyApp(repository: repository));
 }
 
 void _setupLogging() {
@@ -21,18 +23,23 @@ void _setupLogging() {
 }
 
 class MyApp extends StatelessWidget {
+  final Repository repository;
+
+  const MyApp({Key? key, required this.repository}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         Provider<Repository>(
-          create: (_) => MemoryRepository(),
+          create: (_) => repository,
           lazy: false,
+          dispose: (_, Repository repository) => repository.close(),
         ),
         Provider<ServiceInterface>(
           // You can switch between different services
-          // create: (_) => RecipeService.create(),
-          create: (_) => MockService()..create(),
+          create: (_) => RecipeService.create(),
+          // create: (_) => MockService()..create(),
           lazy: false,
         )
       ],
