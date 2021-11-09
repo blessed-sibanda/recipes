@@ -39,7 +39,7 @@ class DatabaseHelper {
     await db.execute('''
       CREATE TABLE $ingredientTable (
         ingredientId INTEGER PRIMARY KEY,
-        recipeId INTEGER PRIMARY KEY,
+        recipeId INTEGER,
         name TEXT,
         weight REAL
       )
