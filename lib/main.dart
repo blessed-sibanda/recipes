@@ -4,6 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:logging/logging.dart';
 import 'package:recipes/data/memory_repository.dart';
 import 'package:recipes/mock_service/mock_service.dart';
+import 'data/repository.dart';
+import 'network/recipe_service.dart';
+import 'network/service_interface.dart';
 
 import 'ui/main_screen.dart';
 
@@ -25,11 +28,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<MemoryRepository>(
+        Provider<Repository>(
           create: (_) => MemoryRepository(),
           lazy: false,
         ),
-        Provider(
+        Provider<ServiceInterface>(
+          // you can also switch to RecipeService
+          // create: (_) => RecipeService.create(),
           create: (_) => MockService()..create(),
           lazy: false,
         )
